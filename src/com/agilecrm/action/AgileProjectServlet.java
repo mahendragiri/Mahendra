@@ -20,7 +20,7 @@ public class AgileProjectServlet extends HttpServlet {
 
 		resp.setContentType("text/plain");
 		resp.getWriter().println("Hello, world hiiii");
-		resp.getWriter().println("Hello, world hiiii");
+		resp.getWriter().println("Hello, world");
 				
 		EmployeeDto employeeDto=new EmployeeDto();
 		employeeDto.setFirstName("mahendra");
