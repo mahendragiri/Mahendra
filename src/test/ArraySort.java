@@ -19,7 +19,7 @@ public class ArraySort {
 				}
 			}
 		}
-		System.out.println(Arrays.toString(str));
+		System.out.println("printing name "+Arrays.toString(str));
 		return str;
 	}	
 	public static void main(String[] args) {
