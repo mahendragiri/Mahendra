@@ -20,10 +20,6 @@ public class ArraySort {
 			}
 		}
 		System.out.println(Arrays.toString(str));
-<<<<<<< HEAD
-=======
-
->>>>>>> helper
 		return str;
 	}	
 	public static void main(String[] args) {
