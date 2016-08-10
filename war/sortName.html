@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+
+ <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery-2.2.2min.js"></script>
+    
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	
+	$("#btn").on('click',function(){
+		$("ol").append('<br><li><input type="text"></li>');
+	});
+	
+	$("#srt_btn").on('click',function(){
+		var list={};
+		var a=0;
+		$("input").each(function(index,value){
+			list[a]=$(this).val();
+			a++;
+		});
+		
+		$.ajax({
+	        url : 'sortName',
+	        type: "POST",
+	        dataType: 'json',
+	        data:{in_data:JSON.stringify(list)},
+	        success : function(result) {
+	        	$("div").empty();
+	        	$("div").append('<span>this is sort list</span>');
+	        	$.each(result,function(index,value){
+	        		$("div").append('<div><h5>'+value+'</h5></div>');
+	        	});
+	        }
+	    });
+	});
+	
+	
+});
+</script>
+
+
+
+</head>
+<body>
+<h2 >Enter the name</h2>
+
+<button class="btn btn-primary" id="btn" type="button">Add another name</button>
+<br>
+<button class="btn btn-success" id="srt_btn" type="button">sort name</button><br><br>
+<ol>
+<li><input type="text" id="q"></li>
+</ol>
+<div></div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+
+function printMatrix(input){
+	var downRow=0;
+	var upRow=input-1;
+	var forwardColumn=0;
+	var backwordColum=input-1;
+	var element=1;
+	var matrix=new Array(input)
+	for (i=0; i <input; i++){
+	    matrix[i]=new Array(input)
+	}
+	
+	for(var i=0;i<input;i++){
+		$("table").append('<tr>');
+		for(var x=0;x<input;x++){
+			$("table").append('<td id="'+i+''+x+'" height:"10px" weight:"10px"></td');
+		}
+		$("table").append('</tr>');
+	}
+	
+	
+	while(element<=input*input){
+		for(var i=forwardColumn;i<=backwordColum;i++){
+			matrix[downRow][i]=element++;
+		}
+		for(var i=downRow+1;i<=upRow;i++){
+			matrix[i][backwordColum]=element++;
+		}
+		for(var i=backwordColum-1;i>=forwardColumn;i--){
+			matrix[upRow][i]=element++;
+		}
+		for(var i=upRow-1;i>downRow;i--){
+			matrix[i][forwardColumn]=element++;
+		}
+		
+		forwardColumn++;
+		backwordColum--;
+		downRow++;
+		upRow--;
+	}
+	
+	for(var i=0;i<input;i++){
+		for(var x=0;x<input;x++){
+			var a=i+''+x;
+			$(a).html(matrix[i][x]);
+		}
+	}
+}
+
+
+$(document).ready(function(){
+	$("button").on('click',function(){
+		var input=$("input").val()*1;
+		if(isNaN(input)){
+			alert('Enter only number');
+			return;
+		}
+		printMatrix(input);
+	});
+});
+
+
+
+</script>
+
+
+<h3>Enter the number to generate Magic Matrix</h3>
+<input type="text" placeholder="Entex nNumber">
+<button type="button" class="btn btn-primary">Click</button>
+<table border="2px"></table>
+</body>
+</html>
