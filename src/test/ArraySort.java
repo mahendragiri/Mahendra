@@ -21,6 +21,7 @@ public class ArraySort {
 			}
 		}
 		System.out.println(Arrays.toString(str));
+		System.out.println("helper branch");
 		return str;
 	}	
 	public static void main(String[] args) {
